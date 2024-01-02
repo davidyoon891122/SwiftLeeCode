@@ -42,6 +42,8 @@ class Algorithm {
             first += 1
             last -= 1
         }
-        
+
+        /// It can be faster than upper solution
+        // s = s.reversed()
     }
 }
