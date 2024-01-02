@@ -7,7 +7,8 @@
 
 import Foundation
 
-class ValidParindrome {
+class Algorithm {
+
     func isPalindrome(_ s: String) -> Bool {
         let stringArray = Array(s.lowercased())
 
@@ -25,5 +26,22 @@ class ValidParindrome {
         }
 
         return true
+    }
+
+    func reverseString(_ s: inout [Character]) {
+        var first = 0
+        var last = s.count - 1
+
+        while first < last {
+            var temp: Character
+
+            temp = s[first]
+            s[first] = s[last]
+            s[last] = temp
+
+            first += 1
+            last -= 1
+        }
+        
     }
 }
