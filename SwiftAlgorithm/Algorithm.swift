@@ -46,4 +46,40 @@ class Algorithm {
         /// It can be faster than upper solution
         // s = s.reversed()
     }
+
+
+    func reorderLogFiles(_ logs: [String]) -> [String] {
+        var digitArray: [String] = []
+        var letterArray: [String] = []
+
+
+        for log in logs {
+            let components = log.components(separatedBy: " ")
+
+            if let firstLetter = components[1].first {
+                if firstLetter.isLetter {
+                    letterArray.append(log)
+                } else {
+                    digitArray.append(log)
+                }
+            }
+        }
+
+        letterArray = letterArray.sorted(by: { first, second in
+            let firstIndex = first.firstIndex(of: " ")!
+            let secondIndex = second.firstIndex(of: " ")!
+
+            let firstItem = first[firstIndex...]
+            let secondItem = second[secondIndex...]
+
+            if firstItem.compare(secondItem, options: .caseInsensitive) == .orderedSame {
+                return first.compare(second) == .orderedAscending
+            }
+
+            return firstItem.compare(secondItem) == .orderedAscending
+        })
+
+        return letterArray + digitArray
+    }
+
 }

@@ -45,4 +45,26 @@ final class SwiftAlgorithmTests: XCTestCase {
         XCTAssertEqual(ex2, target2)
     }
 
+    func test_reorderLogFiles() {
+        let logs1 = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
+        let logs2 = ["j mo", "5 m w", "g 07", "o 2 0", "t q h"]
+
+        let sol1 = ["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2 3 6"]
+        let sol2 = ["5 m w","j mo","t q h","g 07","o 2 0"]
+
+
+
+
+        let result = algorithm.reorderLogFiles(logs1)
+
+        XCTAssertEqual(result, sol1)
+
+        let result2 = algorithm.reorderLogFiles(logs2)
+
+        XCTAssertEqual(result2, sol2)
+
+
+
+    }
+
 }
