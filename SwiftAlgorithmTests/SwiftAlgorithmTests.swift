@@ -78,4 +78,12 @@ final class SwiftAlgorithmTests: XCTestCase {
         XCTAssertEqual(algorithm.mostCommonWord(paragraph2, banned2), sol2)
     }
 
+    func test_groupAnagrams() {
+        let strs = ["eat","tea","tan","ate","nat","bat"]
+
+        let sol = [["bat"], ["nat","tan"], ["ate","eat","tea"]]
+
+        XCTAssertEqual(algorithm.groupAnagrams(strs).count, sol.count)
+    }
+
 }

@@ -116,4 +116,17 @@ class Algorithm {
 
         return result
     }
+
+    func groupAnagrams(_ strs: [String]) -> [[String]] {
+
+        var wordDictionary: [String: [String]] = [:]
+
+        for word in strs {
+            let sortedWord = String(word.sorted())
+
+            wordDictionary[sortedWord, default: []].append(word)
+        }
+
+        return Array(wordDictionary.values)
+    }
 }
