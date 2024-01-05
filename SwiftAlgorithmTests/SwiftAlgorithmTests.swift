@@ -62,9 +62,20 @@ final class SwiftAlgorithmTests: XCTestCase {
         let result2 = algorithm.reorderLogFiles(logs2)
 
         XCTAssertEqual(result2, sol2)
+    }
 
+    func test_mostCommonWord() {
+        let paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+        let paragraph2 = "a, a, a, a, b,b,b,c, c"
 
+        let banned = ["hit"]
+        let banned2 = ["a"]
 
+        let sol = "ball"
+        let sol2 = "b"
+        
+        XCTAssertEqual(algorithm.mostCommonWord(paragraph, banned), sol)
+        XCTAssertEqual(algorithm.mostCommonWord(paragraph2, banned2), sol2)
     }
 
 }

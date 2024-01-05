@@ -82,4 +82,38 @@ class Algorithm {
         return letterArray + digitArray
     }
 
+    func mostCommonWord(_ paragraph: String, _ banned: [String]) -> String {
+        var result = ""
+
+        for char in paragraph {
+            if char.isLetter || char.isNumber || char == " " {
+                result.append(char)
+            } else {
+                result.append(" ")
+            }
+        }
+
+        var words = result.lowercased().components(separatedBy: " ")
+        words = words.filter { !$0.isEmpty }
+
+        var countDictionay: [String: Int] = [:]
+
+
+        for word in words {
+            if !banned.contains(word) {
+                if countDictionay.contains(where: { $0.key == word }) {
+                    countDictionay[word]! += 1
+                } else {
+                    countDictionay[word] = 1
+                }
+            }
+        }
+
+        if let maxValueEntry = countDictionay.max(by: { $0.value < $1.value }) {
+            print(maxValueEntry.key)
+            return maxValueEntry.key
+        }
+
+        return result
+    }
 }
