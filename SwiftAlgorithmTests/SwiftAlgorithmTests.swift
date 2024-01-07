@@ -86,4 +86,13 @@ final class SwiftAlgorithmTests: XCTestCase {
         XCTAssertEqual(algorithm.groupAnagrams(strs).count, sol.count)
     }
 
+    func test_longestPalindrome() {
+        let ex = "babad"
+        let ex1 = "cbbd"
+
+
+        XCTAssertEqual(algorithm.longestPalindrome(ex), "bab")
+        XCTAssertEqual(algorithm.longestPalindrome(ex1), "bb")
+    }
+
 }

@@ -129,4 +129,37 @@ class Algorithm {
 
         return Array(wordDictionary.values)
     }
+
+    func longestPalindrome(_ s: String) -> String {
+
+        if s.count < 2 || s == String(s.reversed()) {
+                    return s
+                }
+
+        var result = ""
+        for i in 0..<s.count - 1 {
+            let index = i
+
+            result = [result, expand(left: index, right: index + 1, str: Array(s)), expand(left: index, right: index + 2, str: Array(s))].max { $0.count < $1.count }!
+            print(result)
+        }
+
+        return result
+
+    }
+}
+
+private extension Algorithm {
+    func expand(left: Int, right: Int, str: [Character]) -> String {
+
+        var left = left
+        var right = right
+        print("left:\(left), right:\(right)")
+        while left >= 0 && right < str.count && str[left] == str[right] {
+            left -= 1
+            right += 1
+        }
+
+        return String(str[left + 1 ..< right])
+    }
 }
